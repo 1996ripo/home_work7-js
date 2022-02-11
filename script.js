@@ -56,7 +56,7 @@
 //     }
 
 //     set firstName(value){
-//         if(/(^[A-Z][a-z.']+[ ]+[A-Z][a-z.']+$)/.test(value) && value.split(" ").length == 1){
+//         if(/(^[A-Z][a-z.']+$)/.test(value)){
 //             this._firstName=value;
 //         } else {
 //             console.log(`Incorrect firstName`);
@@ -65,7 +65,7 @@
 //     }
 
 //     set lastName(value){
-//         if(/(^[A-Z][a-z.']+[ ]+[A-Z][a-z.']+$)/.test(value) && value.split(" ").length == 1){
+//         if(/(^[A-Z][a-z.']+$)/.test(value)){
 //             this._lastName=value;
 //         } else {
 //             console.log(`Incorrect lastName`);
@@ -145,7 +145,7 @@
 //     }
 
 //     set name(value) {
-//         if (/(^[A-Z][a-z.']+[ ]+[A-Z][a-z.']+$)/.test(value) && value.split(" ").length == 1) {
+//         if (/(^[A-Z][a-z.']+$)/.test(value)) {
 //             this._name = value;
 //         } else {
 //             console.log(`Incorrect name`);
@@ -297,7 +297,7 @@
 //     }
 
 //     set name(value) {
-//         if (/(^[A-Z][a-z.']+[ ]+[A-Z][a-z.']+$)/.test(value) && value.split(" ").length == 1) {
+//         if (/(^[A-Z][a-z.']+$)/.test(value)) {
 //             this._name = value;
 //         } else {
 //             console.log(`Incorrect name`);
@@ -330,10 +330,6 @@
 // // console.log(account1.toString());
 
 // ================4=======================
-// Student is inherited from Person. It should have program(array of strings), year, fee.
-// It should have appropriate getters and setters. 
-
-
 // class Person {
 //     constructor(firstName, lastName, gender, age) {
 //         this._firstName = firstName;
@@ -343,7 +339,7 @@
 //     }
 
 //     toString() {
-//         return `I am ${this.getFullName} and I ${this._age} years old.`
+//         return JSON.stringify(this)
 //     }
 
 //     get firstName() {
@@ -367,7 +363,7 @@
 //     }
 
 //     set firstName(value) {
-//         if (/(^[A-Z][a-z.']+[ ]+[A-Z][a-z.']+$)/.test(value) && value.split(" ").length == 1) {
+//         if (/(^[A-Z][a-z.']+$)/.test(value)) {
 //             this._firstName = value;
 //         } else {
 //             console.log(`Incorrect firstName`);
@@ -376,7 +372,7 @@
 //     }
 
 //     set lastName(value) {
-//         if (/(^[A-Z][a-z.']+[ ]+[A-Z][a-z.']+$)/.test(value) && value.split(" ").length == 1) {
+//         if (/(^[A-Z][a-z.']+$)/.test(value)) {
 //             this._lastName = value;
 //         } else {
 //             console.log(`Incorrect lastName`);
@@ -385,39 +381,154 @@
 //     }
 // }
 
+
+
 // class Student extends Person {
-//     constructor
+//     constructor(firstName, lastName, gender, age, array, year, fee) {
+//         super(firstName, lastName, gender, age);
+//         this._array = array;
+//         this._year = year;
+//         this._fee = fee;
+//         this.infObj = {};
+//     }
+
+//     passExam(program, grade) {
+//         for (let i = 0; i < this.array.length; i++) {
+//             if (this.array[i] == program) {
+//                 this.infObj[program] = grade;
+//             }
+//         }
+//         if (Object.keys(this.infObj).length == this.array.length) {
+//             for (var key in this.infObj) {
+//                 if (this.infObj[key] < 50) {
+//                     console.log(`you have an insufficient grade with ${key} `);
+//                     return;
+//                 }
+//             }
+//             this.year++;
+//             console.log(`You passed the next course, welcome to ${this.year} year`);
+//         }
+//     }
+
+//     get array() {
+//         return this._array;
+//     }
+
+//     get year() {
+//         return this._year;
+//     }
+
+//     get fee() {
+//         return this._fee;
+//     }
+
+//     set array(value) {
+//         value.forEach(element => {
+//             if (typeof element !== 'string') {
+//                 return `array must be consist only is strings `
+//             }
+//         });
+//         this._array = value;
+//     }
+
+//     set year(value) {
+//         if (typeof value !== 'number' || value.toString().split().length !== 4) {
+//             return `year must be number `
+//         }
+//         this._year = value;
+//     }
+
+//     set fee(value) {
+//         if (typeof value !== 'number' || value <= 0) {
+//             return `fee must be a number and it must be > 0`
+//         }
+//         this._fee = value;
+//     }
+
+
 // }
 
-// let Person1 = new Person('Hripsime', 'Manukyan', 'female', '25');
-// console.log(Person1);
+
+// class Teacher extends Person {
+//     constructor(firstName, lastName, gender, age, program, pay) {
+//         super(firstName, lastName, gender, age);
+//         this._program = program;
+//         this._pay = pay;
+//     }
+
+//     get program() {
+//         return this._program
+//     }
+
+//     get pay() {
+//         return this._pay
+//     }
+
+//     set program(value) {
+//         if (typeof this.program !== 'string') {
+//             return `information a program is not correct`
+//         };
+//         this._program = value;
+//     }
+
+//     set pay(value) {
+//         if (typeof this.program !== 'number' && value < 0) {
+//             return `pay value mast be a number and > 0`
+//         };
+//         this._program = value;
+//     }
+// }
+
+
+// let Student1 = new Student('Mane', 'Hovhannisyan', 'femaile', 21, ['js', 'html', 'css'], 2022, 250000);
+
+// Student1.passExam('js', 100);
+// Student1.passExam('html', 95);
+// Student1.passExam('css', 55);
+
+// let Teacher1 = new Teacher('Hripsime', 'Manukyan', 'female', '25', 'js', 500000);
+// console.log(Teacher1);
+
 
 // =================5================
-function Clock({ template }) {
-    let timer;
-    function render() {
-        let date = new Date();
-        let hours = date.getHours();
-        if (hours < 10) hours = '0' + hours;
-        let mins = date.getMinutes();
-        if (mins < 10) mins = '0' + mins;
-        let secs = date.getSeconds();
-        if (secs < 10) secs = '0' + secs;
-        let output = template
-            .replace('h', hours)
-            .replace('m', mins)
-            .replace('s', secs);
-        console.log(output);
-    }
-    this.stop = function () {
-        clearInterval(timer);
-    };
-    this.start = function () {
-        render();
-        timer = setInterval(render, 1000);
-    };
-}
-let clock = new Clock({ template: 'h:m:s' });
-clock.start();
-clock.stop();
+// class Clock {
+//     constructor({ template }) {
+//         this.template = template;
+//     }
+
+//     render() {
+//         let date = new Date();
+
+//         let hours = date.getHours();
+//         if (hours < 10) hours = '0' + hours;
+
+//         let mins = date.getMinutes();
+//         if (mins < 10) mins = '0' + mins;
+
+//         let secs = date.getSeconds();
+//         if (secs < 10) secs = '0' + secs;
+
+//         let output = this.template
+//             .replace('h', hours)
+//             .replace('m', mins)
+//             .replace('s', secs);
+
+//         console.log(output);
+//     }
+
+//     stop() {
+//         clearInterval(this.timer);
+//     }
+
+//     start() {
+//         this.render();
+//         this.timer = setInterval(() => this.render(), 1000);
+//     }
+// }
+
+// // ---------stugum------------
+// let clock = new Clock({ template: 'h:m:s' });
+// clock.start();
+// clock.stop()
+
 
