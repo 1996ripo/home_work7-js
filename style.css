@@ -1,0 +1,56 @@
+img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.break {
+    border: 5px solid black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+li > div {
+    width: 300px;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+li {
+    border: 2px solid black;
+    padding: 20px;
+    margin: 50px;
+    list-style: decimal;
+}
+
+select {
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+#result > li {
+    width: 500px;
+    height: 100%;
+}
+
+#pages > a {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px;
+}
+
+#resultN4 {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 500px;
+    height: 100%;
+}
+
+#resultN4 p {
+    padding: 5xpx;
+    margin: 25px;
+}
